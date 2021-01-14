@@ -1,9 +1,36 @@
 <html>
 <head>
     <title>Страны и население</title>
-    <
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 </head>
 <body>
-<div style="text-align:center;">[ваш контент]</div>
+<div style="text-align:center;">
+    <canvas id="myChart" width="400px" height="100px"></canvas>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for country in countries %}'{{ country.name }}',{% endfor %}],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [{% for country in countries %}'{{ country.population }}',{% endfor %}],
+                    backgroundColor: [{% for country in countries %}'{{ country.color }}',{% endfor %}],
+                    borderColor: [],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</div>
 </body>
 </html>

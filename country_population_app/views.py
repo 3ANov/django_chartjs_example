@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
 # Create your views here.
-def home(request):
+from country_population_app.models import Country
 
-    return render(request, 'home.html')
+
+def home(request):
+    countries = Country.objects.all()
+    return render(request, 'home.html', {'countries': countries})
