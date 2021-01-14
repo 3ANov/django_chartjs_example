@@ -14,7 +14,7 @@
                 labels: [{% for country in countries %}'{{ country.name }}',{% endfor %}],
                 datasets: [{
                     label: '# of Votes',
-                    data: [{% for country in countries %}'{{ country.population }}',{% endfor %}],
+                    data: [{% for country in countries %}{{ country.population }},{% endfor %}],
                     backgroundColor: [{% for country in countries %}'{{ country.color }}',{% endfor %}],
                     borderColor: [],
                     borderWidth: 2
